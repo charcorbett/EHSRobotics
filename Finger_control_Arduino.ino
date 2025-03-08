@@ -1,26 +1,119 @@
 #include <Servo.h>
-#define numOfValsRec 5 
-#define digitsPerValRec 1
 
-Servo servoThumb;
-Servo servoIndex;
-Servo servoMiddle;
-Servo servoRing;
-Servo servoPinky;
+Servo servo1; 
+Servo servo2;
+Servo servo3;
+Servo servo4;
+// Servo servo6;
+// Servo servo7;
+Servo thumbServo; 
 
-
-
-
-
-
+int i = 100;
+int thumbPin = 6; 
 
 void setup() {
-  // put your setup code here, to run once:
-
+  servo1.attach(3);
+  servo2.attach(4); 
+  servo3.attach(5); 
+  servo4.attach(6);
+  
+  thumbServo.attach(thumbPin);  
 }
 
 void loop() {
+  for (i = 0; i <= 180; i++){
+    thumbServo.write(i); 
+    servo3.write(i); 
+    servo2.write(i);
+    servo1.write(i);
 
-  // put your main code here, to run repeatedly:
+    if (servo4.read() != 180) {
+    servo4.write(0); 
+    }
+    delay(5);
+  }
+  delay(500);    
 
+  for (i = 180; i >= 0; i--){
+    servo3.write(i);
+    delay(5);
+  }
+  delay(500);    
+
+  for (i = 180; i >= 0; i--){
+    thumbServo.write(i);
+    delay(5);
+  }
+  delay(500);    
+
+  for (i = 180; i >= 0; i--){
+    servo2.write(i);
+    servo1.write(i);
+    thumbServo.write(180);
+
+    delay(5);
+  }
+
+  thumbServo.write(180);   
+  delay(500);    
+  thumbServo.write(0);
+  delay(1000);
+
+  for (i = 0; i <= 180; i++){
+    thumbServo.write(i);
+    servo1.write(i);
+    delay(5);
+  } 
+
+  delay(500);    
+
+  for (i = 180; i >= 0; i--){
+    thumbServo.write(i);
+    servo1.write(i);
+    delay(5);
+  }
+  delay(500);    
+
+  for (i = 0; i <= 160; i++){
+    thumbServo.write(i);
+    servo2.write(i);
+    delay(5);
+  } 
+  delay(500);    
+
+  for (i = 160; i >= 0; i--){
+    thumbServo.write(i);
+    servo2.write(i);
+    delay(5);
+  }
+  delay(500);    
+
+  for (i = 0; i <= 160; i++){
+    thumbServo.write(i);
+    servo3.write(i);
+    delay(5);
+  } 
+  delay(500);    
+
+   for (i = 160; i >= 0; i--){
+    thumbServo.write(i);
+    servo3.write(i);
+    delay(5);
+  }
+  delay(500);    
+
+  for (i = 0; i <= 160; i++){
+    thumbServo.write(i);
+    servo4.write(i);
+    delay(5);
+  } 
+  delay(500);    
+
+  for (i = 160; i >= 0; i--){
+    thumbServo.write(i);
+    servo4.write(i);
+    delay(5);
+  }
+
+  delay(1000);
 }
